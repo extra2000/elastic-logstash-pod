@@ -1,0 +1,92 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: elk-logstash-01-pod
+  name: elk-logstash-01-pod
+  annotations:
+    seccomp.security.alpha.kubernetes.io/pod: localhost/default.json
+spec:
+  restartPolicy: OnFailure
+  hostNetwork: false
+  containers:
+  - name: logstash-01
+    image: localhost/extra2000/elastic/logstash
+    securityContext:
+      runAsGroup: 1000
+      runAsUser: 1000
+      allowPrivilegeEscalation: false
+      privileged: false
+      capabilities:
+        add: []
+        drop:
+        - CAP_MKNOD
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+      seLinuxOptions:
+        type: elk_logstash_01_pod_logstash_01.process
+    resources:
+      requests:
+        memory: 1000Mi
+        cpu: 1000m
+      limits:
+        memory: 1000Mi
+        cpu: 1000m
+    env:
+      - name: ES_API_KEY
+        valueFrom:
+          configMapKeyRef:
+            name: logstash-01-configmap
+            key: es.api_key
+    ports:
+    - containerPort: 5044
+      hostPort: 5044
+      hostIP: 0.0.0.0
+      protocol: tcp
+    - containerPort: 9600
+      hostPort: 9600
+      hostIP: 0.0.0.0
+      protocol: tcp
+    volumeMounts:
+    - mountPath: /usr/share/logstash/config/logstash.yml
+      name: logstash-01-yml
+      readOnly: true
+    - mountPath: /usr/share/logstash/config/pipelines.yml
+      name: logstash-01-pipelines-yml
+      readOnly: true
+    - mountPath: /usr/share/logstash/pipeline
+      name: logstash-01-pipelines-directory
+      readOnly: true
+    - mountPath: /usr/share/logstash/config/elastic-ca.pem
+      name: logstash-01-ssl-ca
+      readOnly: true
+    - mountPath: /usr/share/logstash/config/logstash-server.crt
+      name: logstash-01-ssl-crt
+      readOnly: true
+    - mountPath: /usr/share/logstash/config/logstash-server.key
+      name: logstash-01-ssl-key
+      readOnly: true
+    - mountPath: /usr/share/logstash/data
+      name: logstash-01-data
+  volumes:
+  - name: logstash-01-yml
+    hostPath:
+      path: ./configs/logstash-01.yml
+  - name: logstash-01-pipelines-yml
+    hostPath:
+      path: ./configs/logstash-01-pipelines.yml
+  - name: logstash-01-pipelines-directory
+    hostPath:
+      path: ./pipelines
+  - name: logstash-01-ssl-ca
+    hostPath:
+      path: ./secrets/elastic-ca.pem
+  - name: logstash-01-ssl-crt
+    hostPath:
+      path: ./secrets/certificate-bundle/logstash-01/logstash-01.crt
+  - name: logstash-01-ssl-key
+    hostPath:
+      path: ./secrets/certificate-bundle/logstash-01/logstash-01-pkcs8.key
+  - name: logstash-01-data
+    persistentVolumeClaim:
+      claimName: elk-logstash-01-data

@@ -1,0 +1,11 @@
+secrets/*
+!secrets/.gitkeep
+
+configmaps/*
+!configmaps/*.example
+
+configs/*
+!configs/*.example
+
+pipelines/*
+!pipelines/*.example

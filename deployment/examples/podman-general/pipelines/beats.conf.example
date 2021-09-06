@@ -1,0 +1,39 @@
+input {
+  beats {
+    ecs_compatibility => "v1"
+    port => 5044
+    ssl => true
+    ssl_certificate_authorities => ["/usr/share/logstash/config/elastic-ca.pem"]
+    ssl_certificate => "/usr/share/logstash/config/logstash-server.crt"
+    ssl_key => "/usr/share/logstash/config/logstash-server.key"
+    ssl_verify_mode => "force_peer"
+  }
+}
+
+output {
+  if [@metadata][beat] == "metricbeat" {
+    elasticsearch {
+      ecs_compatibility => "v1"
+      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      ssl_certificate_verification => true
+      api_key => "${ES_API_KEY}"
+      ssl => true
+      data_stream => false
+      ilm_enabled => true
+      ilm_policy => "metricbeat"
+      ilm_rollover_alias => "metricbeat-7.14.1"
+      ilm_pattern => "{now/d}-000001"
+    }
+  } else {
+    elasticsearch {
+      ecs_compatibility => "v1"
+      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      ssl_certificate_verification => true
+      api_key => "${ES_API_KEY}"
+      ssl => true
+      data_stream => false
+    }
+  }
+}
