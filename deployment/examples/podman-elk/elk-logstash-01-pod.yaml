@@ -27,17 +27,22 @@ spec:
         type: elk_logstash_01_pod_logstash_01.process
     resources:
       requests:
-        memory: 1000Mi
+        memory: 1500Mi
         cpu: 1000m
       limits:
-        memory: 1000Mi
+        memory: 1500Mi
         cpu: 1000m
     env:
-      - name: ES_API_KEY
-        valueFrom:
-          configMapKeyRef:
-            name: logstash-01-configmap
-            key: es.api_key
+    - name: ES_JAVA_OPTS
+      valueFrom:
+        configMapKeyRef:
+          name: logstash-01-configmap
+          key: env_java_opts
+    - name: ES_API_KEY
+      valueFrom:
+        configMapKeyRef:
+          name: logstash-01-configmap
+          key: es.api_key
     ports:
     - containerPort: 5044
       hostPort: 5044
