@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.1.0...v1.2.0) (2021-10-25)
+
+
+### Features
+
+* **logstash:** upgrade from version `7.15.0` to `7.15.1` ([dbebacd](https://github.com/extra2000/elastic-logstash-pod/commit/dbebacd26fe5c781654a5f4f90a361e20c512e35))
+
 ## [1.1.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.0.0...v1.1.0) (2021-10-23)
 
 
