@@ -324,7 +324,7 @@ Create Elasticsearch template for Metricbeat using the following command:
 
 .. code-block:: bash
 
-    sudo podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.15.0 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
+    sudo podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.15.1 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
 
 Then, delete the temporary API key:
 
