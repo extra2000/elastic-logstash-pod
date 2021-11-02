@@ -1,5 +1,15 @@
 # Changelog
 
+### [1.2.1](https://github.com/extra2000/elastic-logstash-pod/compare/v1.2.0...v1.2.1) (2021-11-02)
+
+
+### Documentations
+
+* **deployment:** fix typo `ecs-logstash` index name ([37d16f2](https://github.com/extra2000/elastic-logstash-pod/commit/37d16f2234e6b676ab0539b21defc1898a312c17))
+* **examples:** fix path for `elastic-ca.pem` ([3de11b6](https://github.com/extra2000/elastic-logstash-pod/commit/3de11b6ed15049ba5aea858bccc3ed8900b1fe12))
+* **metricbeat:** add delete phase ([0de0640](https://github.com/extra2000/elastic-logstash-pod/commit/0de0640e6590965097e15eb214556c46ebe32594))
+* **pipeline:** change metricbeat from version 7.15.0 to 7.15.1 ([5ffbf13](https://github.com/extra2000/elastic-logstash-pod/commit/5ffbf133e4c10e612aac123ceb15704feed6b29c))
+
 ## [1.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.1.0...v1.2.0) (2021-10-25)
 
 
