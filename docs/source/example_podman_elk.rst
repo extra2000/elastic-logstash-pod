@@ -134,7 +134,7 @@ Login your Kibana instance as user ``elastic`` and execute the following command
           "index": [
             {
               "names": [
-                "ecs-logstash-*",
+                "ecs-logstash*",
                 "filebeat-*",
                 "winlogbeat-*",
                 "metricbeat-*",
