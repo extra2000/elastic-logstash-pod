@@ -401,6 +401,12 @@ Login your Kibana instance as user ``elastic`` and execute the following command
               "freeze": {},
               "readonly": {}
             }
+          },
+          "delete": {
+            "min_age": "3h",
+            "actions": {
+              "delete": {}
+            }
           }
         }
       }
