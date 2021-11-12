@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.2.1...v1.3.0) (2021-11-12)
+
+
+### Features
+
+* **logstash:** update version `7.15.1` to `7.15.2` ([fe83809](https://github.com/extra2000/elastic-logstash-pod/commit/fe838093f58e7ff3974864666e1bbeedaba195a3))
+
+
+### Documentations
+
+* **deployment:** add instructions for creating Winlogbeat template ([adf7a39](https://github.com/extra2000/elastic-logstash-pod/commit/adf7a39267400b788f0ca7acc2c2a26a8ead3ead))
+* **README:** change "beats" to Metricbeat ([f91e5e9](https://github.com/extra2000/elastic-logstash-pod/commit/f91e5e99ef4067775c8b43fecce891509c891d33))
+
 ### [1.2.1](https://github.com/extra2000/elastic-logstash-pod/compare/v1.2.0...v1.2.1) (2021-11-02)
 
 
