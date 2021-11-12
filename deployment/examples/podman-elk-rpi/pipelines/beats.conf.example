@@ -22,7 +22,7 @@ output {
       data_stream => false
       ilm_enabled => true
       ilm_policy => "metricbeat"
-      ilm_rollover_alias => "metricbeat-7.15.1"
+      ilm_rollover_alias => "metricbeat-7.15.2"
       ilm_pattern => "{now/d}-000001"
     }
   } else {
