@@ -407,3 +407,159 @@ Login your Kibana instance as user ``elastic`` and execute the following command
 .. note::
 
     This ILM Policy configuration is for testing purpose, you may need to change for production.
+
+Create Winlogbeat Elasticsearch Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create a temporary admin API key for managing Winlogbeat. Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
+
+.. code-block:: text
+
+    POST /_security/api_key
+    {
+      "name": "tmp-winlogbeat",
+      "expiration": "1h",
+      "role_descriptors": {
+        "superuser": {
+          "cluster": [
+            "manage_index_templates",
+            "monitor",
+            "manage_ilm"
+          ],
+          "index": [
+            {
+              "names": [
+                "winlogbeat-*"
+              ],
+              "privileges": [
+                "write",
+                "create",
+                "create_index",
+                "manage",
+                "manage_ilm"
+              ]
+            }
+          ]
+        }
+      }
+    }
+
+If success, it will produce the following output:
+
+.. code-block:: json
+
+    {
+      "id" : "aBwDFH0BnIvKXzwH5BRv",
+      "name" : "tmp-winlogbeat",
+      "expiration" : 1636721939133,
+      "api_key" : "eERnEMPJTdCOSE76SB5Erw"
+    }
+
+On Windows platform, configure temporary Elasticsearch connection in ``C:\ProgramData\Elastic\Beats\winlogbeat\winlogbeat.yml``:
+
+.. code-block:: powershell
+
+    notepad C:\ProgramData\Elastic\Beats\winlogbeat\winlogbeat.yml
+
+Make sure to comment ``output.logstash*`` configs and then set ``output.elasticsearch`` as follows:
+
+.. code-block:: yaml
+
+    output.elasticsearch:
+      hosts: ["elk-server.lan:9200"]
+      protocol: "https"
+      ssl.verification_mode: "certificate"
+      ssl.certificate_authorities: ["C:\\ProgramData\\Elastic\\Beats\\elastic-ca.pem"]
+      ssl.certificate: "C:\\ProgramData\\Elastic\\Beats\\beats-certificate-bundle\\beats\\beats.crt"
+      ssl.key: "C:\\ProgramData\\Elastic\\Beats\\beats-certificate-bundle\\beats\\beats.key"
+      api_key: "aBwDFH0BnIvKXzwH5BRv:eERnEMPJTdCOSE76SB5Erw"
+
+On Windows platform, create Elasticsearch template for Winlogbeat using the following command as ``Administrator``:
+
+.. code-block:: powershell
+
+    cd "C:\Program Files\Elastic\Beats\7.15.2\winlogbeat"
+    .\winlogbeat.exe setup --index-management --path.config "C:\ProgramData\Elastic\Beats\winlogbeat"
+
+
+Then, delete the temporary API key:
+
+.. code-block:: text
+
+    DELETE /_security/api_key
+    {
+      "name" : "tmp-winlogbeat"
+    }
+
+Fine Tune Winlogbeat ILM Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
+
+.. code-block:: text
+
+    PUT _ilm/policy/winlogbeat
+    {
+      "policy": {
+        "phases": {
+          "hot": {
+            "min_age": "0ms",
+            "actions": {
+              "rollover": {
+                "max_size": "50gb",
+                "max_age": "1h"
+              },
+              "forcemerge": {
+                "max_num_segments": 1,
+                "index_codec": "best_compression"
+              },
+              "shrink": {
+                "number_of_shards": 1
+              },
+              "readonly": {}
+            }
+          },
+          "warm": {
+            "min_age": "1h",
+            "actions": {
+              "set_priority": {
+                "priority": 50
+              },
+              "shrink": {
+                "number_of_shards": 1
+              },
+              "forcemerge": {
+                "max_num_segments": 1
+              },
+              "allocate": {
+                "number_of_replicas": 1
+              },
+              "readonly": {}
+            }
+          },
+          "cold": {
+            "min_age": "2h",
+            "actions": {
+              "set_priority": {
+                "priority": 0
+              },
+              "allocate": {
+                "number_of_replicas": 1
+              },
+              "freeze": {},
+              "readonly": {}
+            }
+          },
+          "delete": {
+            "min_age": "3h",
+            "actions": {
+              "delete": {}
+            }
+          }
+        }
+      }
+    }
+
+.. note::
+
+    This ILM Policy configuration is for testing purpose, you may need to change for production.
