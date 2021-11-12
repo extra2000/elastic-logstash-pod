@@ -276,13 +276,13 @@ Set the following values in ``/etc/metricbeat/metricbeat.yml``:
 Create Metricbeat Elasticsearch Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Create a temporary admin API key for managing Beats. Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
+Create a temporary admin API key for managing Metricbeat. Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
 
 .. code-block:: text
 
     POST /_security/api_key
     {
-      "name": "tmp-beats-admin",
+      "name": "tmp-metricbeat",
       "expiration": "1h",   
       "role_descriptors": { 
         "superuser": {
@@ -315,7 +315,7 @@ If success, it will produce the following output:
 
     {
       "id" : "aqvbpXsBFle_vVK8fjfJ",
-      "name" : "tmp-beats-admin",
+      "name" : "tmp-metricbeat",
       "expiration" : 1630578830630,
       "api_key" : "beUH7QK9SFGwNAWPjhSmMA"
     }
@@ -332,7 +332,7 @@ Then, delete the temporary API key:
 
     DELETE /_security/api_key
     {
-      "name" : "tmp-beats-admin"
+      "name" : "tmp-metricbeat"
     }
 
 Fine Tune Metricbeat ILM Policy
