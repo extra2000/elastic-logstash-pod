@@ -1,5 +1,14 @@
 # Changelog
 
+### [1.3.1](https://github.com/extra2000/elastic-logstash-pod/compare/v1.3.0...v1.3.1) (2021-11-15)
+
+
+### Documentations
+
+* **deployment:** add instructions to create Filebeat template ([b060307](https://github.com/extra2000/elastic-logstash-pod/commit/b060307974f4b634d208e07a8e5771541f8f5004))
+* **logstash:** add missing output for Winlogbeat ([8cb9b7b](https://github.com/extra2000/elastic-logstash-pod/commit/8cb9b7b6478aac719b63c7d29233f806d8c0cb21))
+* **logstash:** add output for Filebeat ([eafee44](https://github.com/extra2000/elastic-logstash-pod/commit/eafee447eb00144259078e04511c850d45781e7c))
+
 ## [1.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.2.1...v1.3.0) (2021-11-12)
 
 
