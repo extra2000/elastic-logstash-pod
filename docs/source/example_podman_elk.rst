@@ -563,3 +563,138 @@ Login your Kibana instance as user ``elastic`` and execute the following command
 .. note::
 
     This ILM Policy configuration is for testing purpose, you may need to change for production.
+
+Create Filebeat Elasticsearch Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Create a temporary admin API key for managing Filebeat. Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
+
+.. code-block:: text
+
+    POST /_security/api_key
+    {
+      "name": "tmp-filebeat",
+      "expiration": "1h",   
+      "role_descriptors": { 
+        "superuser": {
+          "cluster": [
+            "manage_index_templates",
+            "monitor",
+            "manage_ilm"
+          ],
+          "index": [
+            {
+              "names": [
+                "filebeat-*"
+              ],
+              "privileges": [
+                "write",
+                "create",
+                "create_index",
+                "manage",
+                "manage_ilm"
+              ]
+            }
+          ]
+        }
+      }
+    }
+
+If success, it will produce the following output:
+
+.. code-block:: json
+
+    {
+      "id" : "xOL6In0BFNBv1FTCj6RH",
+      "name" : "tmp-filebeat",
+      "expiration" : 1636972985734,
+      "api_key" : "x5UQUaftSjGfs8EAiw_MjA"
+    }
+
+Create Elasticsearch template for Metricbeat using the following command:
+
+.. code-block:: bash
+
+    sudo podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:7.15.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+
+Then, delete the temporary API key:
+
+.. code-block:: text
+
+    DELETE /_security/api_key
+    {
+      "name" : "tmp-filebeat"
+    }
+
+Fine Tune Filebeat ILM Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Login your Kibana instance as user ``elastic`` and execute the following command using ``Dev Tools``:
+
+.. code-block:: text
+
+    PUT _ilm/policy/filebeat
+    {
+      "policy": {
+        "phases": {
+          "hot": {
+            "min_age": "0ms",
+            "actions": {
+              "rollover": {
+                "max_size": "50gb",
+                "max_age": "1h"
+              },
+              "forcemerge": {
+                "max_num_segments": 1,
+                "index_codec": "best_compression"
+              },
+              "shrink": {
+                "number_of_shards": 1
+              },
+              "readonly": {}
+            }
+          },
+          "warm": {
+            "min_age": "1h",
+            "actions": {
+              "set_priority": {
+                "priority": 50
+              },
+              "shrink": {
+                "number_of_shards": 1
+              },
+              "forcemerge": {
+                "max_num_segments": 1
+              },
+              "allocate": {
+                "number_of_replicas": 1
+              },
+              "readonly": {}
+            }
+          },
+          "cold": {
+            "min_age": "2h",
+            "actions": {
+              "set_priority": {
+                "priority": 0
+              },
+              "allocate": {
+                "number_of_replicas": 1
+              },
+              "freeze": {},
+              "readonly": {}
+            }
+          },
+          "delete": {
+            "min_age": "3h",
+            "actions": {
+              "delete": {}
+            }
+          }
+        }
+      }
+    }
+
+.. note::
+
+    This ILM Policy configuration is for testing purpose, you may need to change for production.
