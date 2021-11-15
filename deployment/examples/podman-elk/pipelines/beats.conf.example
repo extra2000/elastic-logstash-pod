@@ -39,6 +39,20 @@ output {
       ilm_rollover_alias => "winlogbeat-7.15.2"
       ilm_pattern => "{now/d}-000001"
     }
+  } else if [@metadata][beat] == "filebeat" {
+    elasticsearch {
+      ecs_compatibility => "v1"
+      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      ssl_certificate_verification => true
+      api_key => "${ES_API_KEY}"
+      ssl => true
+      data_stream => false
+      ilm_enabled => true
+      ilm_policy => "filebeat"
+      ilm_rollover_alias => "filebeat-7.15.2"
+      ilm_pattern => "{now/d}-000001"
+    }
   } else {
     elasticsearch {
       ecs_compatibility => "v1"
