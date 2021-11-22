@@ -9,3 +9,5 @@ configs/*
 
 pipelines/*
 !pipelines/*.example
+
+logstash-01-pod.yaml
