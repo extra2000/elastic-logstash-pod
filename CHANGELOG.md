@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.3.1...v2.0.0) (2021-11-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **pods:** pod files have been removed and become example file
+
+### Code Refactoring
+
+* **pods:** remove pod file and make it as example file ([beb0226](https://github.com/extra2000/elastic-logstash-pod/commit/beb02268d658491a368793769f9e010a078ba929))
+
+
+### Documentations
+
+* **deployments:** add instructions to create pod file ([df25630](https://github.com/extra2000/elastic-logstash-pod/commit/df25630a49cc2632e0a62eee1a9ce6e68b53c9cf))
+* **README:** add badges ([a5c6dc8](https://github.com/extra2000/elastic-logstash-pod/commit/a5c6dc8d3010b5eb6d3b32f4fedeb9e1daeca75f))
+
 ### [1.3.1](https://github.com/extra2000/elastic-logstash-pod/compare/v1.3.0...v1.3.1) (2021-11-15)
 
 
