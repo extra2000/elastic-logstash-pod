@@ -108,6 +108,7 @@ Create configs and pipelines based on examples
 
 .. code-block:: bash
 
+    cp -v elk-logstash-01-pod.yaml{.example,}
     cp -v ./configmaps/logstash-01.yaml{.example,}
     cp -v ./configs/logstash-01.yml{.example,}
     cp -v ./configs/logstash-01-pipelines.yml{.example,}
