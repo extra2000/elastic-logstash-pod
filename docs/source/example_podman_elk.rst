@@ -147,6 +147,13 @@ Create configs and pipelines based on examples
     cp -v ./configs/logstash-01-pipelines.yml{.example,}
     cp -v ./pipelines/beats.conf{.example,}
 
+Ensure configs, pipelines, and secrets readable by others:
+
+.. code-block:: bash
+
+    chmod o+r ./configs/* ./pipelines/* ./secrets/*
+    chmod o+rx ./pipelines
+
 Create Elasticsearch API key for Logstash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
