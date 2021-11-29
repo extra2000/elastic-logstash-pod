@@ -25,7 +25,6 @@ Build our Logstash image:
 
 .. code-block:: bash
 
-    sudo podman build -t extra2000/elastic/logstash -f Dockerfile.amd64 .
     podman build -t extra2000/elastic/logstash -f Dockerfile.amd64 .
 
 Create ``elknet`` podman network from ``elastic-elasticsearch-pod`` project.
@@ -202,15 +201,16 @@ Then, deploy:
 
 .. code-block:: bash
 
-    sudo podman play kube --configmap configmaps/logstash-01.yaml --seccomp-profile-root ./seccomp logstash-01-pod.yaml
+    podman play kube --configmap configmaps/logstash-01.yaml --seccomp-profile-root ./seccomp logstash-01-pod.yaml
 
 Generate ``systemd`` files and enable on ``boot``:
 
 .. code-block:: bash
 
-    cd /etc/systemd/system/
-    sudo podman generate systemd --files --name logstash-01-pod
-    sudo systemctl enable pod-logstash-01-pod.service container-logstash-01-pod-logstash-01.service
+    mkdir -pv ~/.config/systemd/user
+    cd ~/.config/systemd/user
+    podman generate systemd --files --name logstash-01-pod
+    systemctl --user enable pod-logstash-01-pod.service container-logstash-01-pod-logstash-01.service
 
 Beats Integrations
 ------------------
@@ -342,7 +342,7 @@ Create Elasticsearch template for Metricbeat using the following command:
 
 .. code-block:: bash
 
-    sudo podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.15.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
+    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.15.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
 
 Then, delete the temporary API key:
 
