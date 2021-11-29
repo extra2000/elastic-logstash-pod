@@ -45,6 +45,10 @@ Then, get CA certificate from ``_global_secrets_`` and ``es-coord-01`` instance:
     cp -v /path/to/elastic-elasticsearch-pod/deployment/_global_secrets_/elastic-ca.p12 ./secrets/
     cp -v /path/to/elastic-elasticsearch-pod/deployment/examples/cluster-multi-servers/es-coord-01/secrets/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem ./secrets/elastic-ca.pem
 
+.. note::
+
+    The ``elastic-ca.p12`` file is only used for signing certificates and should not be distributed.
+
 Prerequisites for ``logstash-01``
 ---------------------------------
 
