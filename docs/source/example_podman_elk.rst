@@ -15,11 +15,11 @@ Clone repository and then ``cd`` into the project's root:
     git clone https://github.com/extra2000/elastic-logstash-pod.git
     cd elastic-logstash-pod
 
-``cd`` into ``elastic-logstash-pod/deployment/examples/``:
+From the project's root directory, ``cd`` into ``deployment/examples/``:
 
 .. code-block:: bash
 
-    cd elastic-logstash-pod/deployment/examples/
+    cd deployment/examples/
 
 Build our Logstash image:
 
@@ -33,18 +33,18 @@ Create ``elknet`` podman network from ``elastic-elasticsearch-pod`` project.
 Get CA from ``elastic-elasticsearch-pod`` Project
 -------------------------------------------------
 
-``cd`` into ``elastic-logstash-pod/deployment/examples/podman-elk``:
+From the project's root directory, ``cd`` into ``deployment/examples/podman-elk``:
 
 .. code-block:: bash
 
-    cd elastic-logstash-pod/deployment/examples/podman-elk
+    cd deployment/examples/podman-elk
 
 Then, get CA certificate from ``_global_secrets_`` and ``es-coord-01`` instance:
 
 .. code-block:: bash
 
     cp -v /path/to/elastic-elasticsearch-pod/deployment/_global_secrets_/elastic-ca.p12 ./secrets/
-    cp -v /path/to/elastic-elasticsearch-pod/deployment/examples/cluster/es-coord-01/secrets/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem ./secrets/elastic-ca.pem
+    cp -v /path/to/elastic-elasticsearch-pod/deployment/examples/cluster-multi-servers/es-coord-01/secrets/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem ./secrets/elastic-ca.pem
 
 Prerequisites for ``logstash-01``
 ---------------------------------
