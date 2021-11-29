@@ -1,10 +1,19 @@
-Example Deployment for ELK using Podman
-=======================================
+Deployment on same ES Host
+==========================
 
-Example how to deploy a small Logstash instance for ELK using Podman.
+Example how to deploy a Logstash instance on the same Elasticsearch host using Podman.
 
 Getting Started
 ---------------
+
+Clone repository and then ``cd`` into the project's root:
+
+.. code-block:: bash
+
+    mkdir ~/extra2000
+    cd ~/extra2000
+    git clone https://github.com/extra2000/elastic-logstash-pod.git
+    cd elastic-logstash-pod
 
 ``cd`` into ``elastic-logstash-pod/deployment/examples/``:
 

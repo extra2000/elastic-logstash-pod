@@ -1,10 +1,19 @@
-Example Deployment for General Purpose using Podman
-===================================================
+Deployment for General Purpose
+==============================
 
 Example how to deploy a small Logstash instance for general purpose using Podman.
 
 Getting Started
 ---------------
+
+Clone repository and then ``cd`` into the project's root:
+
+.. code-block:: bash
+
+    mkdir ~/extra2000
+    cd ~/extra2000
+    git clone https://github.com/extra2000/elastic-logstash-pod.git
+    cd elastic-logstash-pod
 
 ``cd`` into ``elastic-logstash-pod/deployment/examples/``:
 
