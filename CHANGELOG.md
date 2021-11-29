@@ -1,5 +1,29 @@
 # Changelog
 
+## [3.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v2.0.0...v3.0.0) (2021-11-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deployments:** we no longer support rootful Podman deployments
+
+### Code Refactoring
+
+* **pods:** remove `runAsGroup` and `runAsUser` because they are not needed by rootless Podman ([3d267c6](https://github.com/extra2000/elastic-logstash-pod/commit/3d267c6631880ef2540a1898a48d6621b9510ed2))
+* **selinux:** remove unnecessary `container_file_t` and `user_home_t` ([514359f](https://github.com/extra2000/elastic-logstash-pod/commit/514359f983d2b7839aa52070dadb20a9fbed7b79))
+* **sphinx:** change layout to full width ([faedc99](https://github.com/extra2000/elastic-logstash-pod/commit/faedc99fa9c837815e8f771e4ca6391194c43a31))
+
+
+### Documentations
+
+* **deployments:** add instructions to clone repository ([94a0400](https://github.com/extra2000/elastic-logstash-pod/commit/94a04001f9ca0f52917a86c827e5f36778f87f3d))
+* **deployments:** add instructions to verify certs and upload secrets ([e7ce5b6](https://github.com/extra2000/elastic-logstash-pod/commit/e7ce5b6242f9034ac63153f3add6e365c95b22b8))
+* **deployments:** change rootful Podman to rootless Podman instructions ([9fd90f5](https://github.com/extra2000/elastic-logstash-pod/commit/9fd90f57ba88f48d471415d7ee816938188f0afa))
+* **deployments:** don't distribute `elastic-ca.p12` ([1487cbd](https://github.com/extra2000/elastic-logstash-pod/commit/1487cbd3f813218e466eb56f9ed3ca0cdceeb0e2))
+* **deployments:** ensures `configs/`, `pipelines/`, and `secrets/` readable by others ([596440f](https://github.com/extra2000/elastic-logstash-pod/commit/596440f9d8989203590abd3a623af58bb5c264c5))
+* **deployments:** improve `cd` instructions ([c28e8fc](https://github.com/extra2000/elastic-logstash-pod/commit/c28e8fc755de08fac6168e0cba0a72f8c1f36968))
+* **host-preparations:** update instructions for rootless Podman ([d01d79b](https://github.com/extra2000/elastic-logstash-pod/commit/d01d79bda9d7b4d8c1a7c8f28ef997f1f5fa57f7))
+
 ## [2.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v1.3.1...v2.0.0) (2021-11-22)
 
 
