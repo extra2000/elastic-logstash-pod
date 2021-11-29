@@ -94,6 +94,12 @@ Extract the certificate archive:
 
     unzip ./secrets/certificate-bundle.zip -d ./secrets/certificate-bundle
 
+Verify the ``logstash-01.crt`` certificate:
+
+.. code-block:: bash
+
+    cat ./secrets/certificate-bundle/logstash-01/logstash-01.crt | openssl x509 -noout -text | less
+
 For unknown reason, `the generated certificate key needed to be converted to PKCS8`_:
 
 .. _the generated certificate key needed to be converted to PKCS8: https://discuss.elastic.co/t/logstash-ssl-file-does-not-contain-a-valid-private-key-with-beats/173229/2
@@ -101,6 +107,21 @@ For unknown reason, `the generated certificate key needed to be converted to PKC
 .. code-block:: bash
 
     openssl pkcs8 -in ./secrets/certificate-bundle/logstash-01/logstash-01.key -topk8 -out ./secrets/certificate-bundle/logstash-01/logstash-01-pkcs8.key -nocrypt
+
+Distribute Secrets
+~~~~~~~~~~~~~~~~~~
+
+Copy the created certificates and keystore to the node:
+
+.. code-block:: bash
+
+    scp -r -P 22 secrets/certificate-bundle secrets/elastic-ca.pem USER@LOGSTASH-01:extra2000/elastic-logstash-pod/deployment/examples/podman-general/secrets/
+
+On the node, don't forget to label the ``secrets`` directory as ``container_file_t``:
+
+.. code-block:: bash
+
+    chcon -R -v -t container_file_t ./secrets
 
 Load SELinux Security Policy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
