@@ -11,8 +11,6 @@ spec:
   - name: logstash-01
     image: localhost/extra2000/elastic/logstash
     securityContext:
-      runAsGroup: 1000
-      runAsUser: 1000
       allowPrivilegeEscalation: false
       privileged: false
       capabilities:
