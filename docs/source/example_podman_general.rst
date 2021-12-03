@@ -151,8 +151,8 @@ Ensure configs, pipelines, and secrets readable by others:
 
 .. code-block:: bash
 
-    chmod o+r ./configs/* ./pipelines/* ./secrets/*
-    chmod o+rx ./pipelines
+    chmod -R o+r ./configs/* ./pipelines/* ./secrets/*
+    chmod -R o+rx ./pipelines
 
 Create Elasticsearch API key for Logstash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
