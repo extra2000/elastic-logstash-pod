@@ -1,5 +1,12 @@
 # Changelog
 
+### [3.0.1](https://github.com/extra2000/elastic-logstash-pod/compare/v3.0.0...v3.0.1) (2021-12-04)
+
+
+### Documentations
+
+* **deployments:** fix `chmod` command ([3a32812](https://github.com/extra2000/elastic-logstash-pod/commit/3a3281242b9e95752722349edf799327fb4d0ca9))
+
 ## [3.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v2.0.0...v3.0.0) (2021-11-29)
 
 
