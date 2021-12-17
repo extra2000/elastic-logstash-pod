@@ -271,7 +271,7 @@ Extract the certificate archive:
 
     unzip ./secrets/beats-certificate-bundle.zip -d ./secrets/beats-certificate-bundle
 
-The certificates generated in ``./secrets/beats-certificate-bundle`` should be distributed to all Beats agents.
+The certificates generated in ``./secrets/beats-certificate-bundle`` and also ``./secrets/elastic-ca.pem`` should be distributed to all Beats agents.
 
 Get Elasticsearc Cluster UUID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
