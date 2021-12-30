@@ -181,7 +181,10 @@ Login your Kibana instance as user ``elastic`` and execute the following command
                 "metricbeat-*",
                 "packetbeat-*",
                 "heartbeat-*",
-                "journalbeat-*"
+                "journalbeat-*",
+                "logs-*",
+                "metrics-*",
+                "synthetics-*"
               ],
               "privileges": [
                 "write",
