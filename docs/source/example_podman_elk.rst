@@ -368,7 +368,7 @@ Create Elasticsearch template for Metricbeat using the following command:
 
 .. code-block:: bash
 
-    podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.15.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
+    podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:7.16.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
 
 Then, delete the temporary API key:
 
@@ -522,7 +522,7 @@ On Windows platform, create Elasticsearch template for Winlogbeat using the foll
 
 .. code-block:: powershell
 
-    cd "C:\Program Files\Elastic\Beats\7.15.2\winlogbeat"
+    cd "C:\Program Files\Elastic\Beats\7.16.2\winlogbeat"
     .\winlogbeat.exe setup --index-management --path.config "C:\ProgramData\Elastic\Beats\winlogbeat"
 
 
@@ -659,7 +659,7 @@ Create Elasticsearch template for Metricbeat using the following command:
 
 .. code-block:: bash
 
-    podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:7.15.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+    podman run --rm --network elknet -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:7.16.2 setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
 
 Then, delete the temporary API key:
 
