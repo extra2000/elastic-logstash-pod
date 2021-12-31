@@ -12,14 +12,29 @@ input {
 
 output {
   if [@metadata][index] =~ /^.monitoring-*/ {
-    elasticsearch {
-      index => "%{[@metadata][index]}-%{+YYYY.MM.dd}"
-      pipeline => "xpack_monitoring_7"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
-      ssl_certificate_verification => true
-      api_key => "${ES_API_KEY}"
-      ssl => true
+    if [@metadata][_id] {
+      # This check is to ensure the "_id" is preserved to prevent incorrect shard counting on Stack Monitoring UI.
+      # See https://github.com/elastic/kibana/issues/46185#issuecomment-537167448
+      elasticsearch {
+        index => "%{[@metadata][index]}-%{+YYYY.MM.dd}"
+        document_id => "%{[@metadata][_id]}"
+        pipeline => "xpack_monitoring_7"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+      }
+    } else {
+      elasticsearch {
+        index => "%{[@metadata][index]}-%{+YYYY.MM.dd}"
+        pipeline => "xpack_monitoring_7"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+      }
     }
   } else if [@metadata][beat] == "metricbeat" {
     elasticsearch {
