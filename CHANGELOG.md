@@ -1,5 +1,40 @@
 # Changelog
 
+## [4.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v3.0.1...v4.0.0) (2021-12-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* **configs:** Stack Monitoring with self-monitoring no longer works. Instead, use Metricbeat to ship metrics for Stack Monitoring.
+* **xpack:** Legacy stack monitoring will no longer works
+* **pipelines/beats:** Beats pipelines are now default to datastream
+
+### Features
+
+* **dockerfile:** upgrade Logstash from `7.15.2` to `7.16.2` ([10fd2d5](https://github.com/extra2000/elastic-logstash-pod/commit/10fd2d5fd83cfc8bffdd305a873a0a898ac850d9))
+* **pipeline:** add Stack Monitoring index `.monitoring-` into Beats pipeline ([b834994](https://github.com/extra2000/elastic-logstash-pod/commit/b834994482d0951bb9cf588250da7c1f492136f2))
+
+
+### Code Refactoring
+
+* **pipelines/beats:** using datastream instead of indices ([ffe35b7](https://github.com/extra2000/elastic-logstash-pod/commit/ffe35b7c3baa516fae1a9ea683f0e60a857436a0))
+* **xpack:** remove deprecated `xpack.monitoring` ([acfb085](https://github.com/extra2000/elastic-logstash-pod/commit/acfb08512aff7d19fbd87e23195e9041685b624b))
+
+
+### Fixes
+
+* **configs:** add `monitoring.cluster_uuid` ([e1708ce](https://github.com/extra2000/elastic-logstash-pod/commit/e1708ce9e937f79e2f35286795ceea0968aea770))
+* **configs:** add `monitoring.enabled: false` ([8d6d3b4](https://github.com/extra2000/elastic-logstash-pod/commit/8d6d3b45501e6f3262f0fd1ba8222d565b3825a9))
+* **configs:** add `pipeline.ecs_compatibility: disabled` to surpress ECS compatibility warnings ([a07dd74](https://github.com/extra2000/elastic-logstash-pod/commit/a07dd7460aa8913681b4665cc6a26d9128a2b73d))
+
+
+### Documentations
+
+* **deployments-general:** need to distribute `./secrets/elastic-ca.pem` to Beats ([8516150](https://github.com/extra2000/elastic-logstash-pod/commit/8516150a322b73bb07713780ff737de8f44115d2))
+* **deployments:** add `.monitoring-` index privilege ([b915a2b](https://github.com/extra2000/elastic-logstash-pod/commit/b915a2b3e5e403fa292ddf701134c499c90e5cda))
+* **deployments:** add datastream indices privileges ([3b5e86a](https://github.com/extra2000/elastic-logstash-pod/commit/3b5e86ab46348cc8a943dfa0bc774e6fcd884785))
+* **deployments:** update Beats from `7.15.2` to `7.16.2` ([25e542b](https://github.com/extra2000/elastic-logstash-pod/commit/25e542b14bd5a6bd42f716834c7576662786b0c5))
+
 ### [3.0.1](https://github.com/extra2000/elastic-logstash-pod/compare/v3.0.0...v3.0.1) (2021-12-04)
 
 
