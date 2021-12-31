@@ -5,9 +5,3 @@ http.host: elk-logstash-01-pod.elknet
 http.port: 9600
 queue.type: persisted
 queue.max_events: 100
-xpack.monitoring.enabled: true
-xpack.monitoring.elasticsearch.hosts:
-  - https://elk-es-coord-01-pod.elknet:9200
-xpack.monitoring.elasticsearch.username: "logstash_system" 
-xpack.monitoring.elasticsearch.password: "abcde12345"
-xpack.monitoring.elasticsearch.ssl.certificate_authority: config/elastic-ca.pem
