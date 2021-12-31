@@ -7,3 +7,4 @@ queue.type: persisted
 queue.max_events: 100
 monitoring.enabled: false
 monitoring.cluster_uuid: PRODUCTION_ES_CLUSTER_UUID
+pipeline.ecs_compatibility: disabled
