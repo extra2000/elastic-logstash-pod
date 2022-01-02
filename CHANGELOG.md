@@ -1,5 +1,12 @@
 # Changelog
 
+### [4.0.1](https://github.com/extra2000/elastic-logstash-pod/compare/v4.0.0...v4.0.1) (2022-01-02)
+
+
+### Fixes
+
+* **pipeline:** fix incorrect shard counting caused by Metricbeat ([7521d1f](https://github.com/extra2000/elastic-logstash-pod/commit/7521d1f6fbe72cd1417d85b071ad90a908195e75))
+
 ## [4.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v3.0.1...v4.0.0) (2021-12-31)
 
 
