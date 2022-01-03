@@ -61,16 +61,83 @@ output {
       index => "winlogbeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
     }
   } else if [@metadata][beat] == "filebeat" {
-    elasticsearch {
-      ecs_compatibility => "v1"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
-      ssl_certificate_verification => true
-      api_key => "${ES_API_KEY}"
-      ssl => true
-      data_stream => false
-      action => "create"
-      index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+    if [event][dataset] == "elasticsearch.gc" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-server-pipeline-json"
+      }
+    } else if [event][dataset] == "elasticsearch.server" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-server-pipeline-json"
+      }
+    } else if [event][dataset] == "elasticsearch.deprecation" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-deprecation-pipeline-json"
+      }
+    } else if [event][dataset] == "elasticsearch.audit" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-audit-pipeline-json"
+      }
+    } else if [event][dataset] == "elasticsearch.slowlog" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-slowlog-pipeline-json"
+      }
+    } else {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+      }
     }
   } else {
     elasticsearch {
