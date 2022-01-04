@@ -1,5 +1,17 @@
 # Changelog
 
+## [4.1.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.0.1...v4.1.0) (2022-01-04)
+
+
+### Features
+
+* **pipelines/beats:** add Filebeat pipelines for processing Elasticsearch module to be displayed on Stack Monitoring ([c129f99](https://github.com/extra2000/elastic-logstash-pod/commit/c129f991d510d78402141e74c62cc52a4f65b98e))
+
+
+### Documentations
+
+* **deployments-general:** add instructions to create Filebeat template and ingest pipelines for Filebeat's Elasticsearch module ([6dee685](https://github.com/extra2000/elastic-logstash-pod/commit/6dee685f9fafb09d7f53e6b9dc36f948491747ba))
+
 ### [4.0.1](https://github.com/extra2000/elastic-logstash-pod/compare/v4.0.0...v4.0.1) (2022-01-02)
 
 
