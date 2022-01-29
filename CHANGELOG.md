@@ -1,5 +1,18 @@
 # Changelog
 
+## [4.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.1.0...v4.2.0) (2022-01-29)
+
+
+### Features
+
+* **dockerfile:** upgrade Logstash from `7.16.2` to `7.16.3` ([789cf17](https://github.com/extra2000/elastic-logstash-pod/commit/789cf17eccbf4952558f03ff34d54da6d92b1844))
+
+
+### Documentations
+
+* **deployments:** update Beats from `7.16.2` to `7.16.3` ([5e6f860](https://github.com/extra2000/elastic-logstash-pod/commit/5e6f860a8ca569bf8050be3f348bc8165dcc6cf5))
+* **logo:** remove logo ([197e7f5](https://github.com/extra2000/elastic-logstash-pod/commit/197e7f502380898d99dffe2d15c73678a74eefcf))
+
 ## [4.1.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.0.1...v4.1.0) (2022-01-04)
 
 
