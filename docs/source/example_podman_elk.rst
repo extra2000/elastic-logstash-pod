@@ -164,8 +164,8 @@ Login your Kibana instance as user ``elastic`` and execute the following command
     POST /_security/api_key
     {
       "name": "logstash",
-      "expiration": "30d",   
-      "role_descriptors": { 
+      "expiration": "30d",
+      "role_descriptors": {
         "superuser": {
           "cluster": [
             "manage_index_templates",
