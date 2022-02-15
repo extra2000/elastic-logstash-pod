@@ -523,6 +523,12 @@ Create ingest pipelines for processing Filebeat's Elasticsearch module (to be di
 
     podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:7.17.0 setup --pipelines --modules elasticsearch -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
 
+Create ingest pipelines for processing Filebeat's NGINX module using the following command:
+
+.. code-block:: bash
+
+    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:7.17.0 setup --pipelines --modules nginx -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://elk-es-coord-01-pod.elknet:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+
 Then, delete the temporary API key:
 
 .. code-block:: text
