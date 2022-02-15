@@ -126,6 +126,32 @@ output {
         index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
         pipeline => "filebeat-%{[@metadata][version]}-elasticsearch-slowlog-pipeline-json"
       }
+    } else if [event][dataset] == "nginx.access" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-nginx-access-pipeline"
+      }
+    } else if [event][dataset] == "nginx.error" {
+      elasticsearch {
+        ecs_compatibility => "v1"
+        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        ssl_certificate_verification => true
+        api_key => "${ES_API_KEY}"
+        ssl => true
+        data_stream => false
+        action => "create"
+        index => "filebeat-%{[@metadata][version]}-%{[fields][organization_name]}-%{[fields][project_name]}-%{[agent][name]}"
+        pipeline => "filebeat-%{[@metadata][version]}-nginx-error-pipeline"
+      }
     } else {
       elasticsearch {
         ecs_compatibility => "v1"
