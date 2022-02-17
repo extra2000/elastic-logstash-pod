@@ -1,5 +1,24 @@
 # Changelog
 
+## [4.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.2.0...v4.3.0) (2022-02-17)
+
+
+### Features
+
+* **beats:** add pipelines for NGINX Filebeat module ([eab29e8](https://github.com/extra2000/elastic-logstash-pod/commit/eab29e87b096fac179f787b8bdba6793f5d35d53))
+* **dockerfile:** upgrade Logstash from `7.16.3` to `7.17.0` ([11cae55](https://github.com/extra2000/elastic-logstash-pod/commit/11cae55fdbd8c5fee817fa4cd5b801d6138da267))
+
+
+### Styles
+
+* **docs:** remove trailing spaces ([0d05bd8](https://github.com/extra2000/elastic-logstash-pod/commit/0d05bd88a305bf1ed059f33840372f1848844399))
+
+
+### Documentations
+
+* **deployments:** update Beats from `7.16.3` to `7.17.0` ([047a65d](https://github.com/extra2000/elastic-logstash-pod/commit/047a65d428a626d40a05c317d5b8eaaddee2a9de))
+* **podman-general:** add instructions to create NGINX ingest pipeline ([db181da](https://github.com/extra2000/elastic-logstash-pod/commit/db181da4217d0863deb19d64dbf95d9ae8597fac))
+
 ## [4.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.1.0...v4.2.0) (2022-01-29)
 
 
