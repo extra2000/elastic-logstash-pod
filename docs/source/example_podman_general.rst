@@ -336,7 +336,7 @@ Create a temporary admin API key for managing Beats. Login your Kibana instance 
 
     POST /_security/api_key
     {
-      "name": "tmp-beats-admin",
+      "name": "tmp-metricbeat",
       "expiration": "1h",   
       "role_descriptors": { 
         "superuser": {
@@ -369,7 +369,7 @@ If success, it will produce the following output:
 
     {
       "id" : "aqvbpXsBFle_vVK8fjfJ",
-      "name" : "tmp-beats-admin",
+      "name" : "tmp-metricbeat",
       "expiration" : 1630578830630,
       "api_key" : "beUH7QK9SFGwNAWPjhSmMA"
     }
@@ -386,7 +386,7 @@ Then, delete the temporary API key:
 
     DELETE /_security/api_key
     {
-      "name" : "tmp-beats-admin"
+      "name" : "tmp-metricbeat"
     }
 
 Fine Tune Metricbeat ILM Policy
