@@ -1,2 +1,2 @@
 # This file is generated from semantic-release bot
-version = '4.3.0'
+version = '5.0.0'

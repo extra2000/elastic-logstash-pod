@@ -1,5 +1,30 @@
 # Changelog
 
+## [5.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.3.0...v5.0.0) (2022-02-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* **beats:** beats pipeline no longer works for Elastic Stack 7.x
+
+### Features
+
+* **dockerfiles:** upgrade Logstash from `7.17.0` to `8.0.0` ([b0f3084](https://github.com/extra2000/elastic-logstash-pod/commit/b0f3084b5314f8e276adb0db915d62510d6750b5))
+
+
+### Documentations
+
+* **deployments:** rename `tmp-beats-admin` to `tmp-metricbeat` API key name ([2eaa6ce](https://github.com/extra2000/elastic-logstash-pod/commit/2eaa6ceeedcf64f112d11bc288961958f1f81ed5))
+* **deployments:** update beats command prior to v8.0.0 ([0aae8b9](https://github.com/extra2000/elastic-logstash-pod/commit/0aae8b90f17b278e8bc9fedbfd019e5f89e6163b))
+* **deployments:** update Beats from `7.17.0` to `8.0.0` ([9ea451b](https://github.com/extra2000/elastic-logstash-pod/commit/9ea451be840fe36f6a50f127f75c824b082a0642))
+
+
+### Code Refactoring
+
+* **beats:** change `.monitoring-` pipeline required for Elastic Stack 8.0 ([17b7a94](https://github.com/extra2000/elastic-logstash-pod/commit/17b7a94d6849aa1c4abbe4b1b9f5f54dabeef520))
+* **deployments:** remove `podman-elk-rpi` deployment ([cdfe6db](https://github.com/extra2000/elastic-logstash-pod/commit/cdfe6dbcdb7401ece703e04c32159c73f68ec1e0))
+* **deployments:** remove `podman-elk` deployment ([f459d89](https://github.com/extra2000/elastic-logstash-pod/commit/f459d89bf4778b9801d8fdd72d2e3764729cda5d))
+
 ## [4.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.2.0...v4.3.0) (2022-02-17)
 
 
