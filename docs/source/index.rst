@@ -10,5 +10,4 @@ Welcome to Elastic Logstash Pod's documentation!
   legal_notices
   introduction
   host_preparations
-  example_podman_elk
   example_podman_general
