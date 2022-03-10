@@ -1,5 +1,32 @@
 # Changelog
 
+## [6.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v5.0.0...v6.0.0) (2022-03-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deployments:** deployment structure has been reorganized
+
+### Features
+
+* **dockerfiles:** update Logstash from `8.0.0` to `8.0.1` ([d6c7b04](https://github.com/extra2000/elastic-logstash-pod/commit/d6c7b04c735c9a9fb54d2a52e0291cece6902a7e))
+
+
+### Documentations
+
+* **deployments:** update Beats from `8.0.0` to `8.0.1` ([5964a0c](https://github.com/extra2000/elastic-logstash-pod/commit/5964a0c43d8b45745c3aff455bf8bdc18166c5ad))
+
+
+### Code Refactoring
+
+* **deployments:** reorganize ([7520ce9](https://github.com/extra2000/elastic-logstash-pod/commit/7520ce943050dd1c797e5ca3dbcf888cce851660))
+* **docs:** reorganize documentations ([ffcf9ed](https://github.com/extra2000/elastic-logstash-pod/commit/ffcf9ed5d634e02054c8b568bbdcfcee4609e5c6))
+
+
+### Continuous Integrations
+
+* **AppVeyor:** update workdir path ([e990f38](https://github.com/extra2000/elastic-logstash-pod/commit/e990f382e8e032f685fafdf4d9453151766d912b))
+
 ## [5.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v4.3.0...v5.0.0) (2022-02-20)
 
 
