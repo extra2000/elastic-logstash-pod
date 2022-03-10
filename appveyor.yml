@@ -11,7 +11,7 @@ install:
   - sudo apt -y upgrade
   - sudo apt -y install podman
 build_script:
-  - cd ${APPVEYOR_BUILD_FOLDER}/deployment/examples/
+  - cd ${APPVEYOR_BUILD_FOLDER}/deployment/production/logstash/
   - sudo podman build -t extra2000/elastic/logstash -f Dockerfile.amd64 .
   - cd ${APPVEYOR_BUILD_FOLDER}
 on_success:
