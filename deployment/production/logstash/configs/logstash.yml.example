@@ -1,7 +1,7 @@
-node.name: logstash-01
+node.name: logstash
 pipeline.workers: 1
 log.level: info
-http.host: elk-logstash-01-pod.elknet
+http.host: logstash-pod.elknet
 http.port: 9600
 queue.type: persisted
 queue.max_events: 100

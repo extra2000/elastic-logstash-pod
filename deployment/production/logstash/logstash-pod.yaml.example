@@ -2,15 +2,15 @@ apiVersion: v1
 kind: Pod
 metadata:
   labels:
-    app: logstash-01-pod
-  name: logstash-01-pod
+    app: logstash-pod
+  name: logstash-pod
   annotations:
     seccomp.security.alpha.kubernetes.io/pod: localhost/default.json
 spec:
   restartPolicy: OnFailure
   hostNetwork: true
   containers:
-  - name: logstash-01
+  - name: srv01
     image: localhost/extra2000/elastic/logstash
     securityContext:
       allowPrivilegeEscalation: false
@@ -22,7 +22,7 @@ spec:
         - CAP_NET_RAW
         - CAP_AUDIT_WRITE
       seLinuxOptions:
-        type: logstash_01_pod_logstash_01.process
+        type: logstash_podman.process
     resources:
       requests:
         memory: 1500Mi
@@ -34,53 +34,53 @@ spec:
     - name: ES_JAVA_OPTS
       valueFrom:
         configMapKeyRef:
-          name: logstash-01-configmap
+          name: logstash-configmap
           key: env_java_opts
     - name: ES_API_KEY
       valueFrom:
         configMapKeyRef:
-          name: logstash-01-configmap
+          name: logstash-configmap
           key: es.api_key
     volumeMounts:
     - mountPath: /usr/share/logstash/config/logstash.yml
-      name: logstash-01-yml
+      name: logstash-yml
       readOnly: true
     - mountPath: /usr/share/logstash/config/pipelines.yml
-      name: logstash-01-pipelines-yml
+      name: logstash-pipelines-yml
       readOnly: true
     - mountPath: /usr/share/logstash/pipeline
-      name: logstash-01-pipelines-directory
+      name: logstash-pipelines-directory
       readOnly: true
     - mountPath: /usr/share/logstash/config/elastic-ca.pem
-      name: logstash-01-ssl-ca
+      name: logstash-ssl-ca
       readOnly: true
     - mountPath: /usr/share/logstash/config/logstash-server.crt
-      name: logstash-01-ssl-crt
+      name: logstash-ssl-crt
       readOnly: true
     - mountPath: /usr/share/logstash/config/logstash-server.key
-      name: logstash-01-ssl-key
+      name: logstash-ssl-key
       readOnly: true
     - mountPath: /usr/share/logstash/data
-      name: logstash-01-data
+      name: logstash-data
   volumes:
-  - name: logstash-01-yml
+  - name: logstash-yml
     hostPath:
-      path: ./configs/logstash-01.yml
-  - name: logstash-01-pipelines-yml
+      path: ./configs/logstash.yml
+  - name: logstash-pipelines-yml
     hostPath:
-      path: ./configs/logstash-01-pipelines.yml
-  - name: logstash-01-pipelines-directory
+      path: ./configs/logstash-pipelines.yml
+  - name: logstash-pipelines-directory
     hostPath:
       path: ./pipelines
-  - name: logstash-01-ssl-ca
+  - name: logstash-ssl-ca
     hostPath:
       path: ./secrets/elastic-ca.pem
-  - name: logstash-01-ssl-crt
+  - name: logstash-ssl-crt
     hostPath:
-      path: ./secrets/certificate-bundle/logstash-01/logstash-01.crt
-  - name: logstash-01-ssl-key
+      path: ./secrets/certificate-bundle/logstash/logstash.crt
+  - name: logstash-ssl-key
     hostPath:
-      path: ./secrets/certificate-bundle/logstash-01/logstash-01-pkcs8.key
-  - name: logstash-01-data
+      path: ./secrets/certificate-bundle/logstash/logstash-pkcs8.key
+  - name: logstash-data
     persistentVolumeClaim:
-      claimName: logstash-01-data
+      claimName: logstash-data

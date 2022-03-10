@@ -1,4 +1,4 @@
-(block logstash_01_pod_logstash_01
+(block logstash_podman
     (blockinherit container)
     (blockinherit restricted_net_container)
     (allow process proc_t ( file ( ioctl )))

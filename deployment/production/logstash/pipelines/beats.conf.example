@@ -25,7 +25,7 @@ output {
   if [@metadata][index] =~ /^.monitoring-*/ {
     elasticsearch {
       index => "%{[@metadata][index]}"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      hosts => ["https://es-coord-01.mydomain:9200"]
       cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
@@ -35,7 +35,7 @@ output {
   } else if [@metadata][beat] == "metricbeat" {
     elasticsearch {
       ecs_compatibility => "v1"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      hosts => ["https://es-coord-01.mydomain:9200"]
       cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
@@ -47,7 +47,7 @@ output {
   } else if [@metadata][beat] == "winlogbeat" {
     elasticsearch {
       ecs_compatibility => "v1"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      hosts => ["https://es-coord-01.mydomain:9200"]
       cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
@@ -60,7 +60,7 @@ output {
     if [event][dataset] == "elasticsearch.gc" {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -73,7 +73,7 @@ output {
     } else if [event][dataset] == "elasticsearch.server" {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -86,7 +86,7 @@ output {
     } else if [event][dataset] == "elasticsearch.deprecation" {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -99,7 +99,7 @@ output {
     } else if [event][dataset] == "elasticsearch.audit" {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -112,7 +112,7 @@ output {
     } else if [event][dataset] == "elasticsearch.slowlog" {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -125,7 +125,7 @@ output {
     } else {
       elasticsearch {
         ecs_compatibility => "v1"
-        hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+        hosts => ["https://es-coord-01.mydomain:9200"]
         cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
@@ -138,7 +138,7 @@ output {
   } else {
     elasticsearch {
       ecs_compatibility => "v1"
-      hosts => ["https://elk-es-coord-01-pod.elknet:9200"]
+      hosts => ["https://es-coord-01.mydomain:9200"]
       cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"

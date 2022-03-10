@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: logstash-01-configmap
+  name: logstash-configmap
 data:
   env_java_opts: "-Xms512m -Xmx512m"
   es.api_key: "ES_API_KEY"

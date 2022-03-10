@@ -10,4 +10,7 @@ configs/*
 pipelines/*
 !pipelines/*.example
 
-logstash-01-pod.yaml
+selinux/*
+!selinux/*.example
+
+logstash-pod.yaml
