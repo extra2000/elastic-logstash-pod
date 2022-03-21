@@ -103,9 +103,7 @@ Login your Kibana instance as user ``elastic`` and execute the following command
       "role_descriptors": {
         "superuser": {
           "cluster": [
-            "manage_index_templates",
-            "monitor",
-            "manage_ilm"
+            "monitor"
           ],
           "index": [
             {
@@ -124,10 +122,7 @@ Login your Kibana instance as user ``elastic`` and execute the following command
               ],
               "privileges": [
                 "write",
-                "create",
-                "create_index",
-                "manage",
-                "manage_ilm"
+                "create_index"
               ]
             }
           ]
