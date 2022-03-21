@@ -25,7 +25,7 @@ Extract the certificate archive:
 
     unzip ./secrets/beats-certificate-bundle.zip -d ./secrets/beats-certificate-bundle
 
-The certificates generated in ``./secrets/beats-certificate-bundle`` and also ``./secrets/elastic-ca.pem`` should be distributed to all Beats agents.
+The certificates generated in ``./secrets/beats-certificate-bundle`` and also ``./secrets/elastic-ca.crt`` should be distributed to all Beats agents.
 
 Create Metricbeat Elasticsearch Template
 ----------------------------------------
@@ -78,7 +78,7 @@ Create Elasticsearch template for Metricbeat using the following command:
 
 .. code-block:: bash
 
-    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/metricbeat:8.1.0 metricbeat setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
+    podman run --rm -v ./secrets/elastic-ca.crt:/tmp/elastic-ca.crt:ro docker.elastic.co/beats/metricbeat:8.1.0 metricbeat setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.crt"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="aqvbpXsBFle_vVK8fjfJ:beUH7QK9SFGwNAWPjhSmMA"'
 
 Delete the temporary API key:
 
@@ -215,19 +215,19 @@ Create Elasticsearch template for Filebeat using the following command:
 
 .. code-block:: bash
 
-    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+    podman run --rm -v ./secrets/elastic-ca.crt:/tmp/elastic-ca.crt:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --index-management -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.crt"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
 
 Create ingest pipelines for processing Filebeat's Elasticsearch module (to be displayed on Kibana Stack Monitoring) using the following command:
 
 .. code-block:: bash
 
-    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --pipelines --modules elasticsearch -M elasticsearch.server.enabled=true -M elasticsearch.gc.enabled=true -M elasticsearch.audit.enabled=true -M elasticsearch.slowlog.enabled=true -M elasticsearch.deprecation.enabled=true -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+    podman run --rm -v ./secrets/elastic-ca.crt:/tmp/elastic-ca.crt:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --pipelines --modules elasticsearch -M elasticsearch.server.enabled=true -M elasticsearch.gc.enabled=true -M elasticsearch.audit.enabled=true -M elasticsearch.slowlog.enabled=true -M elasticsearch.deprecation.enabled=true -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.crt"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
 
 Create ingest pipelines for processing Filebeat's NGINX module using the following command:
 
 .. code-block:: bash
 
-    podman run --rm -v ./secrets/elastic-ca.pem:/tmp/elastic-ca.pem:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --pipelines --modules nginx -M nginx.access.enabled=true -M nginx.error.enabled=true -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.pem"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
+    podman run --rm -v ./secrets/elastic-ca.crt:/tmp/elastic-ca.crt:ro docker.elastic.co/beats/filebeat:8.1.0 filebeat setup --pipelines --modules nginx -M nginx.access.enabled=true -M nginx.error.enabled=true -E output.elasticsearch.ssl.verification_mode=full -E 'output.elasticsearch.ssl.certificate_authorities=["/tmp/elastic-ca.crt"]' -E 'output.elasticsearch.hosts=["https://es-coord-01.mydomain:9200"]' -E 'output.elasticsearch.api_key="xOL6In0BFNBv1FTCj6RH:x5UQUaftSjGfs8EAiw_MjA"'
 
 Delete the temporary API key:
 

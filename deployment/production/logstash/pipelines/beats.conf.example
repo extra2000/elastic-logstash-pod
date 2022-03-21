@@ -3,9 +3,9 @@ input {
     ecs_compatibility => "v1"
     port => 5044
     ssl => true
-    ssl_certificate_authorities => ["/usr/share/logstash/config/elastic-ca.pem"]
-    ssl_certificate => "/usr/share/logstash/config/logstash-server.crt"
-    ssl_key => "/usr/share/logstash/config/logstash-server.key"
+    ssl_certificate_authorities => ["/usr/share/logstash/config/elastic-ca.crt"]
+    ssl_certificate => "/usr/share/logstash/config/logstash.crt"
+    ssl_key => "/usr/share/logstash/config/logstash-pkcs8.key"
     ssl_verify_mode => "force_peer"
   }
 }
@@ -26,7 +26,7 @@ output {
     elasticsearch {
       index => "%{[@metadata][index]}"
       hosts => ["https://es-coord-01.mydomain:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
       ssl => true
@@ -36,7 +36,7 @@ output {
     elasticsearch {
       ecs_compatibility => "v1"
       hosts => ["https://es-coord-01.mydomain:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
       ssl => true
@@ -48,7 +48,7 @@ output {
     elasticsearch {
       ecs_compatibility => "v1"
       hosts => ["https://es-coord-01.mydomain:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
       ssl => true
@@ -61,7 +61,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -74,7 +74,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -87,7 +87,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -100,7 +100,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -113,7 +113,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -126,7 +126,7 @@ output {
       elasticsearch {
         ecs_compatibility => "v1"
         hosts => ["https://es-coord-01.mydomain:9200"]
-        cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+        cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
         ssl_certificate_verification => true
         api_key => "${ES_API_KEY}"
         ssl => true
@@ -139,7 +139,7 @@ output {
     elasticsearch {
       ecs_compatibility => "v1"
       hosts => ["https://es-coord-01.mydomain:9200"]
-      cacert => ["/usr/share/logstash/config/elastic-ca.pem"]
+      cacert => ["/usr/share/logstash/config/elastic-ca.crt"]
       ssl_certificate_verification => true
       api_key => "${ES_API_KEY}"
       ssl => true

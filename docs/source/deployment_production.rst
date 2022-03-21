@@ -41,7 +41,7 @@ Then, get CA certificate from ``_global_secrets_`` and ``es-coord-01`` instance:
 .. code-block:: bash
 
     cp -v /path/to/elastic-elasticsearch-pod/deployment/_global_secrets_/elastic-ca.p12 ./secrets/
-    cp -v /path/to/elastic-elasticsearch-pod/deployment/cluster-multi-servers/es-coord-01/secrets/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem ./secrets/elastic-ca.pem
+    cp -v /path/to/elastic-elasticsearch-pod/deployment/cluster-multi-servers/es-coord-01/secrets/elasticsearch-ssl-http/kibana/elasticsearch-ca.pem ./secrets/elastic-ca.crt
 
 .. warning::
 

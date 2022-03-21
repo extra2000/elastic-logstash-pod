@@ -51,13 +51,13 @@ spec:
     - mountPath: /usr/share/logstash/pipeline
       name: logstash-pipelines-directory
       readOnly: true
-    - mountPath: /usr/share/logstash/config/elastic-ca.pem
+    - mountPath: /usr/share/logstash/config/elastic-ca.crt
       name: logstash-ssl-ca
       readOnly: true
-    - mountPath: /usr/share/logstash/config/logstash-server.crt
+    - mountPath: /usr/share/logstash/config/logstash.crt
       name: logstash-ssl-crt
       readOnly: true
-    - mountPath: /usr/share/logstash/config/logstash-server.key
+    - mountPath: /usr/share/logstash/config/logstash-pkcs8.key
       name: logstash-ssl-key
       readOnly: true
     - mountPath: /usr/share/logstash/data
@@ -74,13 +74,13 @@ spec:
       path: ./pipelines
   - name: logstash-ssl-ca
     hostPath:
-      path: ./secrets/elastic-ca.pem
+      path: ./secrets/elastic-ca.crt
   - name: logstash-ssl-crt
     hostPath:
-      path: ./secrets/certificate-bundle/logstash/logstash.crt
+      path: ./secrets/logstash.crt
   - name: logstash-ssl-key
     hostPath:
-      path: ./secrets/certificate-bundle/logstash/logstash-pkcs8.key
+      path: ./secrets/logstash-pkcs8.key
   - name: logstash-data
     persistentVolumeClaim:
       claimName: logstash-data
