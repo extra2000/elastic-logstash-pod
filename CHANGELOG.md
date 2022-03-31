@@ -1,5 +1,34 @@
 # Changelog
 
+## [7.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v6.0.0...v7.0.0) (2022-03-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ssl:** path and mount point for SSL certs have changed
+
+### Features
+
+* **beats:** add pipelines for Nginx filebeat ([7916747](https://github.com/extra2000/elastic-logstash-pod/commit/79167476110774c9ef26f1810f4851d97d99159f))
+* **dockerfiles:** upgrade Logstash from `8.0.1` to `8.1.0` ([3833c51](https://github.com/extra2000/elastic-logstash-pod/commit/3833c51fad4541bece2525f1ae9f67b79dc2af0f))
+
+
+### Code Refactoring
+
+* **ssl:** change to OpenSSL style ([aea5855](https://github.com/extra2000/elastic-logstash-pod/commit/aea5855599c0c60da23de93a4860a781a2c43972))
+
+
+### Styles
+
+* **docs:** remove trailing spaces ([526584c](https://github.com/extra2000/elastic-logstash-pod/commit/526584c12abf1fa1f63569edd6b27d26a5c115fe))
+
+
+### Documentations
+
+* **beats-integrations:** update Beats from `8.0.1` to `8.1.0` ([85c9172](https://github.com/extra2000/elastic-logstash-pod/commit/85c91728200198b0087d758e6c0a0d86623f3bf5))
+* **deployment:** remove unnecessary API privileges ([5e97fb5](https://github.com/extra2000/elastic-logstash-pod/commit/5e97fb53b0ef3987b96b8863146f7ec8dcbc26a0))
+* **deployments:** remove old SSL instructions ([aa22265](https://github.com/extra2000/elastic-logstash-pod/commit/aa222656c8c9b4639c0c839fc1f260f26452a651))
+
 ## [6.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v5.0.0...v6.0.0) (2022-03-10)
 
 
