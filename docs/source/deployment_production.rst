@@ -164,5 +164,5 @@ Generate ``systemd`` files and enable on ``boot``:
 
     mkdir -pv ~/.config/systemd/user
     cd ~/.config/systemd/user
-    podman generate systemd --files --name logstash-pod
-    systemctl --user enable pod-logstash-pod.service container-logstash-pod-srv01.service
+    podman generate systemd --files --name logstash-pod-srv01
+    systemctl --user enable container-logstash-pod-srv01.service
