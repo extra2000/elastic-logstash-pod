@@ -37,8 +37,8 @@ Create a temporary admin API key for managing Beats. Login your Kibana instance 
     POST /_security/api_key
     {
       "name": "tmp-metricbeat",
-      "expiration": "1h",   
-      "role_descriptors": { 
+      "expiration": "1h",
+      "role_descriptors": {
         "superuser": {
           "cluster": [
             "manage_index_templates",
