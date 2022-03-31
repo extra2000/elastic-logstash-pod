@@ -1,5 +1,23 @@
 # Changelog
 
+## [7.1.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.0.0...v7.1.0) (2022-03-31)
+
+
+### Features
+
+* **dockerfile:** update Logstash from `8.1.0` to `8.1.1` ([0da45f8](https://github.com/extra2000/elastic-logstash-pod/commit/0da45f8e7f225f9c2f4867b2581be6279585f28d))
+
+
+### Styles
+
+* **docs:** remove trailing spaces ([78003f8](https://github.com/extra2000/elastic-logstash-pod/commit/78003f82b5ea6f33d85e31b3debad98bbb1d6c3e))
+
+
+### Documentations
+
+* **deployment:** simplify `podman generate systemd` ([97d114e](https://github.com/extra2000/elastic-logstash-pod/commit/97d114e31f4c2294001fa8737ca5de739aefe0f1))
+* **deployment:** update Beats from `8.1.0` to `8.1.1` ([0a9ae4e](https://github.com/extra2000/elastic-logstash-pod/commit/0a9ae4e865f11367d89c9b62d470c0238f3eb2fb))
+
 ## [7.0.0](https://github.com/extra2000/elastic-logstash-pod/compare/v6.0.0...v7.0.0) (2022-03-31)
 
 
