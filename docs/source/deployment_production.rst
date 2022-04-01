@@ -88,6 +88,7 @@ Ensure configs, pipelines, and secrets readable by others:
 
     chmod -R o+r ./configs/* ./pipelines/* ./secrets/*
     chmod o+rx ./pipelines
+    find pipelines -type d -exec chmod og+rx {} +
 
 Create Elasticsearch API key for Logstash
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
