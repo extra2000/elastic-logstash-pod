@@ -1,5 +1,18 @@
 # Changelog
 
+## [7.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.1.0...v7.2.0) (2022-04-02)
+
+
+### Features
+
+* **dockerfile:** update Logstash from `8.1.1` to `8.1.2` ([a71eed4](https://github.com/extra2000/elastic-logstash-pod/commit/a71eed4330ab518e3acc312e633da22f51120db6))
+
+
+### Documentations
+
+* **beats-integrations:** update Beats from `8.1.1` to `8.1.2` ([f1522c6](https://github.com/extra2000/elastic-logstash-pod/commit/f1522c61fa713331308413ca26dca075cccd2a58))
+* **deployment:** add instructions to recursively `chmod` pipelines directory ([69f0664](https://github.com/extra2000/elastic-logstash-pod/commit/69f0664feddcac804922938a7a93fc878b05a412))
+
 ## [7.1.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.0.0...v7.1.0) (2022-03-31)
 
 
