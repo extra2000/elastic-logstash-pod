@@ -1,5 +1,17 @@
 # Changelog
 
+## [7.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.2.0...v7.3.0) (2022-05-05)
+
+
+### Features
+
+* **dockerfiles:** update Logstash from `8.1.2` to `8.2.0` ([0f5ad15](https://github.com/extra2000/elastic-logstash-pod/commit/0f5ad1551240e84fe495513c30f2a1b413023716))
+
+
+### Documentations
+
+* **deployment:** update Beats from `8.1.2` to `8.2.0` ([019e78f](https://github.com/extra2000/elastic-logstash-pod/commit/019e78fe5a1c7e5bbfd6edf76d37c7dd5363d2e2))
+
 ## [7.2.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.1.0...v7.2.0) (2022-04-02)
 
 
