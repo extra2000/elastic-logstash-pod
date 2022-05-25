@@ -1,5 +1,22 @@
 # Changelog
 
+## [7.4.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.3.0...v7.4.0) (2022-05-25)
+
+
+### Features
+
+* **dockerfiles:** upgrade Logstash from `8.2.0` to `8.2.1` ([45a3b6e](https://github.com/extra2000/elastic-logstash-pod/commit/45a3b6e802cb5c7bf08fb59f9436c970d58777b0))
+
+
+### Documentations
+
+* **beats:** update Beats from `8.2.0` to `8.2.1` ([7f686ec](https://github.com/extra2000/elastic-logstash-pod/commit/7f686ec15ca4c0e8252daa8ecdf335a3459ddb80))
+
+
+### Continuous Integrations
+
+* **AppVeyor:** disable test due to Kubic broken mirror ([6054308](https://github.com/extra2000/elastic-logstash-pod/commit/6054308036ac14cc7a267d7780b7ee0e7f82441c))
+
 ## [7.3.0](https://github.com/extra2000/elastic-logstash-pod/compare/v7.2.0...v7.3.0) (2022-05-05)
 
 
